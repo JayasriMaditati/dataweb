@@ -1,0 +1,20 @@
+<html>
+<body>
+<table>
+<tr>
+<td>Id</td>
+<td>Desc</td>
+</tr>
+%for item in items:
+<tr>
+<td>
+ {{item["id"]}}
+</td>
+<td>
+ {{item["desc"]}}
+</td>
+</tr>
+%end
+</table>
+</body>
+</html>
