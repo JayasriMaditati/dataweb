@@ -7,14 +7,14 @@
 </tr>
 %for item in items:
 <tr>
-<td>
- {{item["id"]}}
-</td>
-<td>
- {{item["desc"]}}
-</td>
+<!--Prof Version - {{str(item["id"])}}-->
+<td> {{item["id"]}} </td>
+<td> {{item["desc"]}} </td>
+<td><a href="/delete/{{item["id"]}}"> Delete </a> </td>
 </tr>
 %end
 </table>
+<hr/>
+<a href="/add">New Item </a>
 </body>
 </html>
