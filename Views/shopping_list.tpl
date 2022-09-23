@@ -1,16 +1,14 @@
 <html>
 <body>
+<h2> Shopping List </h2>
+<hr/>
 <table>
-<tr>
-<td>Id</td>
-<td>Desc</td>
-</tr>
 %for item in items:
 <tr>
 <!--Prof Version - {{str(item["id"])}}-->
-<td> {{item["id"]}} </td>
 <td> {{item["desc"]}} </td>
 <td><a href="/delete/{{item["id"]}}"> Delete </a> </td>
+<td><a href="/edit/{{item["id"]}}"> Edit </a> </td>
 </tr>
 %end
 </table>
