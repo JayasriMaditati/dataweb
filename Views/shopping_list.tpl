@@ -3,7 +3,7 @@
 <h2> Shopping List </h2>
 <hr/>
 <table>
-%for item in items:
+%for item in shopping_list:
 <tr>
 <!--Prof Version - {{str(item["id"])}}-->
 <td> {{item["desc"]}} </td>
@@ -13,6 +13,9 @@
 %end
 </table>
 <hr/>
-<a href="/add">New Item </a>
+<form action = '/add' method="post">
+    <p> Add New Item: <input name = "description"/></p>
+    <p> <button type = "submit"> Submit </button>
+</form>
 </body>
 </html>
