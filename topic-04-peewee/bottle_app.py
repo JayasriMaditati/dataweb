@@ -2,7 +2,7 @@
 # A very simple Bottle Hello World app for you to get started with...
 from bottle import default_app, route,template,get,post,request,redirect
 
-from dataset_Database import get_items,add_items,update_items,delete_items
+from peewee_Database import get_items,add_items,update_items,delete_items
 
 
 @route('/')
@@ -19,12 +19,13 @@ def get_list():
 @post('/add')
 def post_add():
     description = request.forms.get("description")
-    quantity = request.forms.get("quantity")
+    #quantity = request.forms.get("quantity")
     try:
         quantity = int(quantity)
     except:
         quantity = 1
-    add_items(description,quantity)
+    #add_items(description,quantity)
+    add_items(description)
     redirect('/list')
 
 @get('/delete/<id>') #We can use @route also

@@ -1,7 +1,9 @@
-from dataset_Database import get_items,add_items,delete_items,update_items
+# test_database.py - functions for testing database.py
+
+from peewee_Database import get_items, add_items, delete_items, update_items
 
 def test_get_items():
-    print("testing get items")
+    print("testing get_items...")
     items = get_items()
     assert type(items) is list
     assert len(items) > 0
@@ -19,60 +21,56 @@ def test_get_items():
     assert type(items[0]['id']) is int
     assert type(items[0]['description']) is str
 
+
 import time
 
 def random_string():
     return str(time.time())
 
-
 def test_add_items():
-    print("Testing Add items")
+    print("testing add_item...")
     description = random_string()
-    quantity = 1
-    add_items(description,quantity)
+    add_items(description)
     items = get_items()
     item = items[-1]
     assert description == item['description']
-    assert quantity == item['quantity']
     delete_items(item['id'])
 
 def test_delete_items():
-    print("testing delete items")
+    print("testing delete_item...")
     description = random_string()
-    quantity = 1
-    add_items(description,quantity)
+    add_items(description)
     items = get_items()
     item = items[-1]
     assert description == item['description']
-    assert quantity == item['quantity']
     delete_items(item['id'])
     items = get_items()
     for item in items:
         assert description != item['description']
 
 def test_update_items():
-    print("testing Update items")
+    print("testing update_item...")
     description = random_string()
-    quantity = 1
-    add_items(description,quantity)
+    add_items(description)
     items = get_items()
     item = items[-1]
     id = str(item['id'])
     description = item['description']
     new_desc = description.replace("1","9").replace(".",":")
-    update_items(id,new_desc)
+    update_items(id, new_desc)
     items = get_items()
     new_found = False
     for item in items:
         if item['id'] == int(id):
             assert item['description'] == new_desc
+            delete_items(item['id'])
             new_found = True
         assert item['description'] != description
     assert new_found
 
-if  __name__ == "__main__":
+if __name__ == "__main__":
     test_get_items()
     test_add_items()
     test_delete_items()
     test_update_items()
-    print("done")
+    print("done.")
