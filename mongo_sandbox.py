@@ -1,8 +1,14 @@
-import pymongo
-#from mongita import MongitaClientDisk
 from pymongo import MongoClient
-#client = MongitaClientDisk()
-client = MongoClient()
+
+import json
+with open("private.json","r") as f:
+    private = json.load(f)
+
+password = private["mongo"]
+print(password)
+
+client = MongoClient(f"mongodb+srv://Example_user:{password}@cluster0.g85qpbj.mongodb.net/?retryWrites=true&w=majority")
+
 
 from bson.objectid import ObjectId
 

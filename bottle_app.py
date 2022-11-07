@@ -2,7 +2,7 @@
 # A very simple Bottle Hello World app for you to get started with...
 from bottle import default_app, route,template,get,post,request,redirect
 
-from student_orm import get_list,add_student,delete_student,update_city
+from mongita_database import get_list,add_student,delete_student,update_city
 
 @route('/')
 
@@ -43,7 +43,7 @@ def get_edit(id):
     if len(rows)!=1:
         redirect('/list')
     row_id, Firstname, Lastname, City = rows[0]['id'],rows[0]['Firstname'],rows[0]['Lastname'],rows[0]['City']
-    assert row_id == int(id)
+    assert row_id == id
     return template('views/edit_student.tpl', id = id , Firstname= Firstname, Lastname= Lastname, City= City)
 
 @post('/edit/<id>')

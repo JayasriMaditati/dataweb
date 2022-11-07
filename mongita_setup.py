@@ -1,8 +1,5 @@
-import pymongo
-#from mongita import MongitaClientDisk
-from pymongo import MongoClient
-#client = MongitaClientDisk()
-client = MongoClient()
+from mongita import MongitaClientDisk
+client = MongitaClientDisk()
 
 from bson.objectid import ObjectId
 
